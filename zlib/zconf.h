@@ -531,4 +531,5 @@ typedef uLong FAR uLongf;
   #pragma map(inflate_copyright,"INCOPY")
 #endif
 
+#define UNALIGNED_OK
 #endif /* ZCONF_H */

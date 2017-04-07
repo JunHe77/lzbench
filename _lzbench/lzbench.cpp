@@ -81,9 +81,9 @@ void print_header(lzbench_params_t *params)
         case TURBOBENCH:
             printf("  Compressed  Ratio   Cspeed   Dspeed         Compressor name Filename\n"); break;
         case TEXT:
-            printf("Compressor name         Compress. Decompress. Compr. size  Ratio Filename\n"); break;
+            printf("Compressor name          Compress. Decompress. Compr. size  Ratio Filename\n"); break;
         case TEXT_FULL:
-            printf("Compressor name         Compress. Decompress.  Orig. size  Compr. size  Ratio Filename\n"); break;
+            printf("Compressor name          Compress. Decompress.  Orig. size  Compr. size  Ratio Filename\n"); break;
         case MARKDOWN:
             printf("| Compressor name         | Compression| Decompress.| Compr. size | Ratio | Filename |\n"); 
             printf("| ---------------         | -----------| -----------| ----------- | ----- | -------- |\n"); 
@@ -112,11 +112,11 @@ void print_speed(lzbench_params_t *params, string_table_t& row)
         case TEXT:
         case TEXT_FULL:
             printf("%-23s", row.col1_algname.c_str());
-            if (cspeed < 10) printf("%6.2f MB/s", cspeed); else printf("%6d MB/s", (int)cspeed);
+            if (cspeed < 100) printf("%6.2f MB/s", cspeed); else printf("%6d MB/s", (int)cspeed);
             if (!dspeed)
                 printf("      ERROR");
             else
-                if (dspeed < 10) printf("%6.2f MB/s", dspeed); else printf("%6d MB/s", (int)dspeed); 
+                if (dspeed < 300) printf(" %6.2f MB/s", dspeed); else printf(" %6d MB/s", (int)dspeed);
             if (params->textformat == TEXT_FULL)
                 printf("%12llu %12llu %6.2f %s\n", (unsigned long long) row.col5_origsize, (unsigned long long)row.col4_comprsize, ratio, row.col6_filename.c_str()); 
             else
